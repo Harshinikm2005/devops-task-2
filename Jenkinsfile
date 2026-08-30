@@ -27,13 +27,13 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
+       stage('Deploy') {
             steps {
                 echo 'Deploying application...'
                 sh '''
                 docker stop $CONTAINER_NAME || true
                 docker rm $CONTAINER_NAME || true
-                docker run -d --name $CONTAINER_NAME -p 8081:80 $IMAGE_NAME:$BUILD_NUMBER
+                docker run -d --name $CONTAINER_NAME -p 8085:80 $IMAGE_NAME:$BUILD_NUMBER
                 '''
             }
         }
